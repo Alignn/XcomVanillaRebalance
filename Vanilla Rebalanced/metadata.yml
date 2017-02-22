@@ -1,0 +1,9 @@
+#
+# metadata.yaml for Vanilla Rebalanced
+
+name: "Vanilla Rebalanced"
+version: 1.0
+description: "Rebalances vanilla content. Air combat is more difficult, research requires interrogations, infantry weapons have clear roles, etc."
+author: Align
+
+master: xcom1

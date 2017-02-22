@@ -1,0 +1,912 @@
+# Vanilla Rebalanced
+# Rebalances existing content without adding anything new.
+# Air combat requires hard choices, research relies more on interrogations, manufacturing can't yield infinite money, infantry weapons all have a clear role, etc. 
+# See each section for details.
+
+# New for Facilities: Alien containment requires research; have to research Alien Biology first, too. 
+facilities:
+  - type: STR_ALIEN_CONTAINMENT
+    requires:
+      - STR_ALIEN_CONTAINMENT
+# Crafts: Lighting slightly buffed, but still inconvenient. Firestorm is now the fastest craft, giving it a late-game role for intercepting Battleships etc.
+# Avenger remains overall best.
+crafts:
+  - type: STR_INTERCEPTOR
+    damageMax: 100
+  - type: STR_LIGHTNING
+    fuelMax: 40
+    speedMax: 3500
+  - type: STR_FIRESTORM
+    fuelMax: 30
+    speedMax: 5400
+  - type: STR_AVENGER
+    speedMax: 4200
+# Craft weapons: Range used to be the most important stat, as it allowed you to intercept most UFOs with your starting Avalanches without any risk of taking damage.
+# To get rid of this problem, UFOs all have the same range (65) now. 
+# As a result, all stats are equally important and help you take down UFOs faster, and by extension take less return fire.
+# Most weapons were buffed to fit this new paradigm.
+# Missiles are way more expensive. Stingrays help down crafts quickly, while Avalanches are nukes; use sparingly.
+# Basic cannon got a little buffed, but is mainly useful because it's much cheaper than missiles.
+# Laser cannon ditto; infinite free ammo is a big deal now.
+# Plasma cannon requires expensive manufactured ammo, and behaves more like the battlefield weapons than a laser.
+# Fusion launchers are the only weapon that outrange UFOs, but are very hard to get. They are also the only manufactured equipment that makes a profit!
+craftWeapons:
+  - type: STR_STINGRAY
+    range: 60
+    damage: 100
+    accuracy: 100
+    ammoMax: 3
+    reloadCautious: 18
+    reloadStandard: 18
+    reloadAggressive: 18
+    projectileSpeed: 30
+  - type: STR_AVALANCHE
+    range: 60
+    damage: 400
+    accuracy: 100
+    ammoMax: 2
+    reloadCautious: 24
+    reloadStandard: 24
+    reloadAggressive: 24
+    projectileSpeed: 30
+  - type: STR_CANNON_UC
+    range: 20
+    accuracy: 33
+    reloadCautious: 2
+    reloadStandard: 2
+    reloadAggressive: 2
+    projectileSpeed: 40
+  - type: STR_LASER_CANNON_UC
+    range: 30
+    damage: 80
+    accuracy: 80
+    reloadCautious: 8
+    reloadStandard: 8
+    reloadAggressive: 8
+  - type: STR_PLASMA_BEAM_UC
+    damage: 140
+    range: 40
+    accuracy: 70
+    ammoMax: 50
+    rearmRate: 10
+    clip: STR_PLASMA_BEAM_ROUNDS_X10
+  - type: STR_FUSION_BALL_UC
+    range: 68
+    ammoMax: 6
+    damage: 800
+    reloadCautious: 12
+    reloadStandard: 12
+    reloadAggressive: 12
+    projectileSpeed: 30
+# Items: Motion scanners & medkits do not require research, and can be bought straight away rather than being manufactured.
+# As mentioned in craft weapons section, craft weapon ammo is expensive.
+# Tank cannon fires HE shells and is a bit more accurate. Still pretty inaccurate due to tank base stats, but the explosiveness helps combat the inaccuracy.
+# Heavy & Auto cannons now have arcing shots, grenade launcher style. Useful to fire over buildings and ensuring shots go off near the target rather than flying into the void.
+# Their AP ammo clip variants were removed.
+# Tank & Heavy laser buffed, usable for sniping high-health targets.
+# Pistols no longer have auto shot, but get cheap (in TUs) snap shots.
+# Tank corpses now recoverable; can be repaired for a fraction of the cost.
+items: 
+  - type: STR_MOTION_SCANNER
+    costBuy: 11400 
+    costSell: 9500
+  - type: STR_MEDI_KIT
+    costBuy: 14200
+    costSell: 11200
+  - type: STR_STINGRAY_MISSILES
+    costBuy: 51300
+    costSell: 44300
+  - type: STR_AVALANCHE_MISSILES
+    transferTime: 96
+    costBuy: 313000
+    costSell: 295000
+  - type: STR_CANNON_ROUNDS_X50
+    transferTime: 48
+    costBuy: 39300
+    costSell: 31100
+  - type: STR_PLASMA_BEAM_ROUNDS_X10
+    size: 0.2
+    costSell: 214300
+    transferTime: 48
+    clipSize: 10
+    listOrder: 1001
+  - type: STR_TANK_CANNON
+    accuracyAimed: 120
+    accuracySnap: 60
+    tuAimed: 80
+    tuSnap: 40
+  - type: STR_HWP_CANNON_SHELLS
+    damageType: 3
+    hitAnimation: 0
+    power: 60
+    clipSize: 15
+  - type: STR_HEAVY_CANNON
+    arcingShot: true
+    accuracySnap: 60
+    accuracyAimed: 100
+    tuSnap: 30
+    tuAimed: 70
+  - type: STR_AUTO_CANNON
+    arcingShot: true
+    accuracyAuto: 30
+    accuracySnap: 50
+    accuracyAimed: 80
+    tuAuto: 40
+    tuSnap: 30
+    tuAimed: 70
+  - type: STR_HC_HE_AMMO
+    power: 60
+  - type: STR_AC_HE_AMMO
+    power: 42
+  - type: STR_TANK_LASER_CANNON
+    accuracyAimed: 125
+    accuracySnap: 95
+    tuSnap: 40
+  - type: STR_HEAVY_LASER
+    accuracyAimed: 115
+    accuracySnap: 75
+  - type: STR_PISTOL
+    accuracySnap: 60
+    accuracyAimed: 78
+    tuSnap: 18
+    tuAimed: 30
+  - type: STR_LASER_PISTOL
+    accuracyAuto: 0
+    accuracySnap: 40
+    accuracyAimed: 68
+    tuAuto: 0
+    tuSnap: 18
+    tuAimed: 30
+  - type: STR_PLASMA_PISTOL
+    accuracyAuto: 0
+    accuracySnap: 65
+    accuracyAimed: 85
+    tuAuto: 0
+    tuSnap: 18
+    tuAimed: 30
+  - type: HOVERTANK_CORPSE_1
+    size: 6
+    transferTime: 96
+    costSell: 180000
+    recover: true
+  - type: TANK_CORPSE_1
+    size: 6
+    transferTime: 96
+    costSell: 90000
+    recover: true
+# UFOs: Some fiddling with balance, but the big one is that they all have the same range (65) now, changing the air game drastically; see the Craft weapons section for more details.
+ufos:
+  - type: STR_SMALL_SCOUT
+    damageMax: 50
+    speedMax: 2200
+    power: 0
+    range: 0
+    reload: 56
+  - type: STR_MEDIUM_SCOUT
+    damageMax: 200
+    speedMax: 2400
+    power: 20
+    range: 65
+    reload: 56
+  - type: STR_LARGE_SCOUT
+    damageMax: 350
+    speedMax: 2700
+    power: 30
+    range: 65
+    reload: 48
+  - type: STR_ABDUCTOR
+    damageMax: 500
+    speedMax: 3400
+    power: 30
+    range: 65
+    reload: 32
+  - type: STR_HARVESTER
+    damageMax: 500
+    speedMax: 3100
+    power: 30
+    range: 65
+    reload: 32
+  - type: STR_SUPPLY_SHIP
+    damageMax: 2200
+    speedMax: 2800
+    power: 40
+    range: 65
+    reload: 24
+  - type: STR_TERROR_SHIP
+    damageMax: 1200
+    speedMax: 4100
+    power: 80
+    range: 65
+    reload: 24
+  - type: STR_BATTLESHIP
+    damageMax: 3000
+    speedMax: 5000
+    accel: 6
+    power: 140
+    range: 65
+    reload: 24
+# Research: Some of this is mentioned in previous sections, but whatever.
+# Motion scanners & medkits do not require research, and can be bought straight away rather than being manufactured.
+# Two new research topics: Alien Artifacts and Alien Biology. They mainly serve to explain how the new research system works.
+# Before you can start researching alien equipment, you need to interrogate aliens. 
+# Before you can interrogate aliens, you need to have completed the autopsy on their race.
+# Before you can build an alien containment, you need to perform any autopsy and then research Alien Biology.
+# The rank and race of an alien determines what they unlock. Terrorist alien races are still useless.
+# Sectoid & floater soldiers unlock research into plasma pistols, snakemen soldiers unlock research into alien grenades and plasma rifles, etc.
+# Engineers and navigators need to be interrogated for UFO components (and allow research into alien missions & UFO types as a bonus).
+# Medics unlock research into the small launcher; highly valuable now that you need more interrogations.
+# "Free techs" like interrogating medics giving insight into a random other aliens have been removed, as they caused the free techs to be researchable despite their dependencies.
+# Laser weapons require Elerium to research and manufacture.
+# Elerium is a simple element and can be researched without interrogations.
+# Blaster Launchers and Psi-Amps are gated behind Ethereal Commanders. Good luck!
+# (But at least you can still get Psi Labs by interrogating Sectoids, and start training/winnowing out psi-weaklings)
+# Hyperwave decoder requires Psi Lab research on top of interrogating a high tier navigator.
+research: 
+  - delete: STR_MOTION_SCANNER
+  - delete: STR_MEDI_KIT
+  - name: STR_ALIEN_EQUIPMENT
+    cost: 50
+    score: 10
+  - name: STR_ALIEN_BIOLOGY
+    cost: 50
+    score: 10
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+      - STR_SNAKEMAN_AUTOPSY
+      - STR_FLOATER_AUTOPSY
+      - STR_MUTON_AUTOPSY
+      - STR_ETHEREAL_AUTOPSY
+      - STR_REAPER_AUTOPSY
+      - STR_CHRYSSALID_AUTOPSY
+      - STR_CELATID_AUTOPSY
+  - name: STR_ALIEN_CONTAINMENT
+    cost: 100
+    score: 10
+    dependencies:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_LASER_WEAPONS
+    dependencies:
+      - STR_ELERIUM_115
+  - name: STR_NAVIGATOR_TIER1
+    dependencies:
+      - STR_SECTOID_NAVIGATOR
+      - STR_FLOATER_NAVIGATOR
+      - STR_SNAKEMAN_NAVIGATOR
+      - STR_MUTON_NAVIGATOR
+  - name: STR_NAVIGATOR_TIER2
+    dependencies:
+      - STR_SNAKEMAN_NAVIGATOR
+      - STR_MUTON_NAVIGATOR
+  - name: STR_NAVIGATOR_TIER3
+    dependencies:
+      - STR_MUTON_NAVIGATOR
+  - name: STR_ENGINEER_TIER1
+    dependencies:
+      - STR_SECTOID_ENGINEER
+      - STR_FLOATER_ENGINEER
+      - STR_SNAKEMAN_ENGINEER
+      - STR_MUTON_ENGINEER
+  - name: STR_ENGINEER_TIER2
+    dependencies:
+      - STR_SNAKEMAN_ENGINEER
+      - STR_MUTON_ENGINEER
+  - name: STR_ENGINEER_TIER3
+    dependencies:
+      - STR_MUTON_ENGINEER
+  - name: STR_SOLDIER_TIER1
+    dependencies:
+      - STR_SECTOID_SOLDIER
+      - STR_FLOATER_SOLDIER
+      - STR_SNAKEMAN_SOLDIER
+      - STR_MUTON_SOLDIER
+      - STR_ETHEREAL_SOLDIER
+  - name: STR_SOLDIER_TIER2
+    dependencies:
+      - STR_SNAKEMAN_SOLDIER
+      - STR_MUTON_SOLDIER
+      - STR_ETHEREAL_SOLDIER
+  - name: STR_SOLDIER_TIER3
+    dependencies:
+      - STR_MUTON_SOLDIER
+      - STR_ETHEREAL_SOLDIER
+  - name: STR_HYPER_WAVE_DECODER
+    dependencies:
+      - STR_UFO_NAVIGATION
+      - STR_PSI_LAB
+      - STR_NAVIGATOR_TIER2
+  - name: STR_ALIEN_GRENADE
+    dependencies:
+      - STR_ELERIUM_115
+      - STR_SOLDIER_TIER2
+  - name: STR_STUN_BOMB
+    dependencies:
+      - STR_ELERIUM_115
+      - STR_SMALL_LAUNCHER
+  - name: STR_SMALL_LAUNCHER
+    dependencies:
+      - STR_SECTOID_MEDIC
+      - STR_FLOATER_MEDIC
+  - name: STR_MIND_PROBE
+    dependencies:
+      - STR_SECTOID_SOLDIER
+      - STR_SECTOID_MEDIC
+      - STR_SECTOID_NAVIGATOR
+      - STR_SECTOID_ENGINEER
+      - STR_SECTOID_LEADER
+      - STR_SECTOID_COMMANDER
+      - STR_ETHEREAL_SOLDIER
+      - STR_ETHEREAL_LEADER
+      - STR_ETHEREAL_COMMANDER
+  - name: STR_PLASMA_PISTOL_CLIP
+    cost: 100
+    dependencies:
+      - STR_ELERIUM_115
+      - STR_PLASMA_PISTOL
+  - name: STR_PLASMA_PISTOL
+    cost: 200
+    dependencies:
+      - STR_SOLDIER_TIER1
+  - name: STR_PLASMA_RIFLE_CLIP
+    cost: 150
+    dependencies:
+      - STR_ELERIUM_115
+      - STR_PLASMA_RIFLE
+  - name: STR_PLASMA_RIFLE
+    cost: 350
+    dependencies:
+      - STR_SOLDIER_TIER2
+  - name: STR_HEAVY_PLASMA_CLIP
+    cost: 300
+    dependencies:
+      - STR_ELERIUM_115
+      - STR_HEAVY_PLASMA
+  - name: STR_HEAVY_PLASMA
+    cost: 700
+    dependencies:
+      - STR_SOLDIER_TIER3
+  - name: STR_BLASTER_BOMB
+    dependencies:
+      - STR_BLASTER_LAUNCHER
+  - name: STR_BLASTER_LAUNCHER
+    dependencies:
+      - STR_ETHEREAL_COMMANDER
+  - name: STR_PSI_AMP
+    dependencies:
+      - STR_ETHEREAL_COMMANDER
+      - STR_PSI_LAB
+  - name: STR_ALIEN_ALLOYS
+    dependencies:
+      - STR_ENGINEER_TIER1
+  - name: STR_UFO_POWER_SOURCE
+    dependencies:
+      - STR_ENGINEER_TIER1
+  - name: STR_UFO_NAVIGATION
+    dependencies:
+      - STR_NAVIGATOR_TIER1
+      - STR_ENGINEER_TIER1
+  - name: STR_UFO_CONSTRUCTION
+    dependencies:
+      - STR_UFO_POWER_SOURCE
+      - STR_UFO_NAVIGATION
+      - STR_ELERIUM_115
+      - STR_ALIEN_ALLOYS
+  - name: STR_NEW_FIGHTER_TRANSPORTER
+    dependencies:
+      - STR_UFO_CONSTRUCTION
+  - name: STR_NEW_FIGHTER_CRAFT
+    dependencies:
+      - STR_NEW_FIGHTER_TRANSPORTER
+      - STR_NAVIGATOR_TIER2
+      - STR_ENGINEER_TIER2
+  - name: STR_ULTIMATE_CRAFT
+    dependencies:
+      - STR_NEW_FIGHTER_CRAFT
+      - STR_NAVIGATOR_TIER3
+      - STR_ENGINEER_TIER3
+  - name: STR_SECTOID
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_SECTOID_SOLDIER
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_SOLDIER_TIER1
+  - name: STR_SECTOID_ENGINEER
+    getOneFree: []
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_ENGINEER_TIER1
+  - name: STR_SECTOID_MEDIC
+    getOneFree: []
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_SMALL_LAUNCHER
+  - name: STR_SECTOID_NAVIGATOR
+    getOneFree: []
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_NAVIGATOR_TIER1
+  - name: STR_SECTOID_LEADER
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+      - STR_MIND_PROBE
+      - STR_PSI_LAB
+  - name: STR_SECTOID_COMMANDER
+    dependencies:
+      - STR_SECTOID_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+      - STR_COMMANDER_PLUS
+      - STR_MIND_PROBE
+      - STR_PSI_LAB
+  - name: STR_CYBERDISC_TERRORIST
+    dependencies:
+      - STR_CYBERDISC_AUTOPSY
+  - name: STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_FLOATER
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_FLOATER_SOLDIER
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_SOLDIER_TIER1
+  - name: STR_FLOATER_ENGINEER
+    getOneFree: []
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_ENGINEER_TIER1
+  - name: STR_FLOATER_MEDIC
+    getOneFree: []
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_SMALL_LAUNCHER
+  - name: STR_FLOATER_NAVIGATOR
+    getOneFree: []
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_NAVIGATOR_TIER1
+  - name: STR_FLOATER_LEADER
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+  - name: STR_FLOATER_COMMANDER
+    dependencies:
+      - STR_FLOATER_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+      - STR_COMMANDER_PLUS
+  - name: STR_REAPER_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_REAPER_TERRORIST
+    dependencies:
+      - STR_REAPER_AUTOPSY
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_SNAKEMAN
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_SNAKEMAN_SOLDIER
+    dependencies:
+      - STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_SOLDIER_TIER1
+      - STR_SOLDIER_TIER2
+  - name: STR_SNAKEMAN_NAVIGATOR
+    getOneFree: []
+    dependencies:
+      - STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_NAVIGATOR_TIER1
+      - STR_NAVIGATOR_TIER2
+  - name: STR_SNAKEMAN_LEADER
+    dependencies:
+      - STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+  - name: STR_SNAKEMAN_ENGINEER
+    getOneFree: []
+    dependencies:
+      - STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_ENGINEER_TIER1
+      - STR_ENGINEER_TIER2
+  - name: STR_SNAKEMAN_COMMANDER
+    dependencies:
+      - STR_SNAKEMAN_AUTOPSY
+    unlocks:
+      - STR_LEADER_PLUS
+      - STR_COMMANDER_PLUS
+  - name: STR_CHRYSSALID_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_CHRYSSALID_TERRORIST
+    dependencies:
+      - STR_CHRYSSALID_AUTOPSY
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_MUTON_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_MUTON
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_MUTON_SOLDIER
+    unlocks:
+      - STR_SOLDIER_TIER1
+      - STR_SOLDIER_TIER2
+      - STR_SOLDIER_TIER3
+    dependencies:
+      - STR_MUTON_AUTOPSY
+  - name: STR_MUTON_ENGINEER
+    getOneFree: []
+    dependencies:
+    unlocks:
+      - STR_ENGINEER_TIER1
+      - STR_ENGINEER_TIER2
+      - STR_ENGINEER_TIER3
+  - name: STR_MUTON_NAVIGATOR
+    getOneFree: []
+    dependencies:
+      - STR_MUTON_AUTOPSY
+    unlocks:
+      - STR_NAVIGATOR_TIER1
+      - STR_NAVIGATOR_TIER2
+      - STR_NAVIGATOR_TIER3
+  - name: STR_SILACOID_TERRORIST
+    dependencies:
+      - STR_SILACOID_AUTOPSY
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_CELATID_TERRORIST
+    dependencies:
+      - STR_CELATID_AUTOPSY
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_ETHEREAL_AUTOPSY
+    unlocks:
+      - STR_ALIEN_BIOLOGY
+  - name: STR_ETHEREAL
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_ETHEREAL_SOLDIER
+    dependencies:
+      - STR_ETHEREAL_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_SOLDIER_TIER1
+      - STR_SOLDIER_TIER2
+      - STR_SOLDIER_TIER3
+      - STR_PSI_LAB
+  - name: STR_ETHEREAL_LEADER
+    dependencies:
+      - STR_ETHEREAL_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_PSI_LAB
+      - STR_LEADER_PLUS
+  - name: STR_ETHEREAL_COMMANDER
+    dependencies:
+      - STR_ETHEREAL_AUTOPSY
+    unlocks:
+      - STR_MIND_PROBE
+      - STR_PSI_LAB
+      - STR_BLASTER_LAUNCHER
+      - STR_LEADER_PLUS
+      - STR_COMMANDER_PLUS
+  - name: STR_SECTOPOD_TERRORIST
+    dependencies:
+      - STR_SECTOPOD_AUTOPSY
+    unlocks:
+      - STR_ALIEN_ORIGINS
+  - name: STR_ALIEN_RESEARCH
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_NAVIGATOR_TIER1
+  - name: STR_ALIEN_HARVEST
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_NAVIGATOR_TIER1
+  - name: STR_ALIEN_ABDUCTION
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_NAVIGATOR_TIER1
+  - name: STR_ALIEN_INFILTRATION
+    needItem: false
+    cost: 100
+    dependencies:
+      - STR_NAVIGATOR_TIER2
+  - name: STR_ALIEN_TERROR
+    needItem: false
+    cost: 100
+    dependencies:
+      - STR_NAVIGATOR_TIER2
+  - name: STR_ALIEN_BASE
+    needItem: false
+    cost: 150
+    dependencies:
+      - STR_NAVIGATOR_TIER3
+  - name: STR_ALIEN_RETALIATION
+    needItem: false
+    cost: 150
+    dependencies:
+      - STR_NAVIGATOR_TIER3
+  - name: STR_ALIEN_SUPPLY
+    needItem: false
+    cost: 150
+    dependencies:
+      - STR_NAVIGATOR_TIER3
+  - name: STR_SMALL_SCOUT
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_ENGINEER_TIER1
+  - name: STR_MEDIUM_SCOUT
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_ENGINEER_TIER1
+  - name: STR_LARGE_SCOUT
+    needItem: false
+    cost: 50
+    dependencies:
+      - STR_ENGINEER_TIER1
+  - name: STR_HARVESTER
+    needItem: false
+    cost: 100
+    dependencies:
+      - STR_ENGINEER_TIER2
+  - name: STR_ABDUCTOR
+    needItem: false
+    cost: 100
+    dependencies:
+      - STR_ENGINEER_TIER2
+  - name: STR_TERROR_SHIP
+    needItem: false
+    cost: 100
+    dependencies:
+      - STR_ENGINEER_TIER2
+  - name: STR_BATTLESHIP
+    needItem: false
+    cost: 150
+    dependencies:
+      - STR_ENGINEER_TIER3
+  - name: STR_SUPPLY_SHIP
+    needItem: false
+    cost: 150
+    dependencies:
+      - STR_ENGINEER_TIER3
+# Manufacturing: The ability to get infinite money through manufacturing broke the geoscape balance.
+# To fix this, things that used to yield a net profit to manufacture no longer do unless you're willing to indirectly sell Elerium.
+# Alien Alloys are the closest to breaking even; make & sell that with your engineers if they don't have anything better to do, so they don't just sit idle.
+# Plasma & laser equipment now require Elerium.
+# Motion scanners and medkits are bought and sold instead of manufactured.
+# Fusion launchers still turn a profit, but they're gated behind interrogating an Ethereal Commander. Good luck!
+# Tanks can now be rebuilt for a fraction of the cost if the wreck is recovered.
+# Plasma cannons (for interception) now require Plasma Beam Ammo to be manufactured. Produced in batches of 10, like how basic cannon ammo is bought in batches of 50.
+manufacture:
+  - name: STR_PLASMA_PISTOL
+    requiredItems:
+      STR_ELERIUM_115: 1
+      STR_ALIEN_ALLOYS: 1
+  - name: STR_PLASMA_RIFLE
+    requiredItems:
+      STR_ELERIUM_115: 2
+      STR_ALIEN_ALLOYS: 2
+  - name: STR_HEAVY_PLASMA
+    requiredItems:
+      STR_ELERIUM_115: 3
+      STR_ALIEN_ALLOYS: 3
+  - name: STR_SMALL_LAUNCHER
+    requiredItems:
+      STR_ELERIUM_115: 2
+      STR_ALIEN_ALLOYS: 2
+  - name: STR_LASER_PISTOL
+    requiredItems:
+      STR_ELERIUM_115: 1
+  - name: STR_LASER_RIFLE
+    requiredItems:
+      STR_ELERIUM_115: 2
+  - name: STR_HEAVY_LASER
+    requiredItems:
+      STR_ELERIUM_115: 5
+  - name: STR_TANK_LASER_CANNON
+    requiredItems:
+      STR_ELERIUM_115: 8
+  - name: STR_LASER_CANNON
+    requiredItems:
+      STR_ELERIUM_115: 15
+  - name: STR_TANK_CANNON_REBUILD
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    space: 25
+    time: 800
+    cost: 49000
+    requiredItems:
+      TANK_CORPSE_1: 1
+    producedItems:
+      STR_TANK_CANNON: 1
+  - name: STR_TANK_ROCKET_LAUNCHER_REBUILD
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    space: 25
+    time: 800
+    cost: 52000
+    requiredItems:
+      TANK_CORPSE_1: 1
+    producedItems:
+      STR_TANK_ROCKET_LAUNCHER: 1
+  - name: STR_TANK_LASER_CANNON_REBUILD
+    category: STR_HEAVY_WEAPONS_PLATFORM
+    requires:
+      - STR_LASER_CANNON
+    space: 25
+    time: 800
+    cost: 102000
+    requiredItems:
+      TANK_CORPSE_1: 1
+      STR_ELERIUM_115: 8
+    producedItems:
+      STR_TANK_LASER_CANNON: 1
+  - name: STR_HOVERTANK_PLASMA_REBUILD
+    requires:
+      - STR_PLASMA_CANNON
+      - STR_NEW_FIGHTER_CRAFT
+    space: 30
+    time: 800
+    cost: 185000
+    requiredItems:
+      HOVERTANK_CORPSE_1: 1
+      STR_ALIEN_ALLOYS: 2
+      STR_ELERIUM_115: 10
+    producedItems:
+      STR_HOVERTANK_PLASMA: 1
+  - name: STR_HOVERTANK_LAUNCHER_REBUILD
+    requires:
+      - STR_FUSION_MISSILE
+      - STR_NEW_FIGHTER_CRAFT
+    space: 30
+    time: 800
+    cost: 196000
+    requiredItems:
+      HOVERTANK_CORPSE_1: 1
+      STR_ALIEN_ALLOYS: 3
+      STR_ELERIUM_115: 8
+    producedItems:
+      STR_HOVERTANK_LAUNCHER: 1
+  - name: STR_PLASMA_BEAM_ROUNDS_X10
+    category: STR_CRAFT_AMMUNITION
+    space: 2
+    time: 300
+    cost: 80000
+    requires:
+      - STR_PLASMA_CANNON
+    requiredItems:
+      - STR_ELERIUM_115: 10
+# UFOpaedia: New entries for the new research items Alien Artifacts and Alien Biology, as well as one for Laser Weapons.
+# Medkits and motion scanners available from the start without research.
+ufopaedia:
+  - id: STR_ALIEN_EQUIPMENT
+    type_id: 8
+    listOrder: 9910
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_EQUIPMENT
+    text: STR_ALIEN_EQUIPMENT_UFOPAEDIA
+  - id: STR_ALIEN_BIOLOGY
+    type_id: 8
+    listOrder: 9920
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_ALIEN_BIOLOGY
+    text: STR_ALIEN_BIOLOGY_UFOPAEDIA
+  - id: STR_LASER_WEAPONS
+    type_id: 8
+    listOrder: 9930
+    section: STR_ALIEN_RESEARCH_UC
+    requires:
+      - STR_LASER_WEAPONS
+    text: STR_LASER_WEAPONS_UFOPAEDIA
+  - id: STR_MEDI_KIT
+    requires: []
+  - id: STR_MOTION_SCANNER
+    requires: []
+# Starting Base equipment: Removed AP ammo clips for starting heavy/auto cannon, since those were removed.
+# Changed interceptor loadouts so they don't start with too many missiles.
+# Start with less missiles overall, since they're expensive now.
+startingBase:
+  crafts:
+    - type: STR_SKYRANGER
+      id: 1
+      fuel: 1500
+      damage: 0
+      items:
+        STR_HEAVY_CANNON: 2
+        STR_HC_HE_AMMO: 2
+        STR_HC_I_AMMO: 2
+        STR_PISTOL: 2
+        STR_PISTOL_CLIP: 2
+        STR_RIFLE: 6
+        STR_RIFLE_CLIP: 12
+        STR_GRENADE: 8
+      status: STR_READY
+    - type: STR_INTERCEPTOR
+      id: 1
+      fuel: 1000
+      damage: 0
+      weapons:
+        - type: STR_STINGRAY
+          ammo: 3
+        - type: STR_CANNON_UC
+          ammo: 200
+      status: STR_READY
+    - type: STR_INTERCEPTOR
+      id: 2
+      fuel: 1000
+      damage: 0
+      weapons:
+        - type: STR_STINGRAY
+          ammo: 3
+        - type: STR_CANNON_UC
+          ammo: 200
+  items:
+    STR_STINGRAY_LAUNCHER: 1
+    STR_STINGRAY_MISSILES: 15
+    STR_AVALANCHE_LAUNCHER: 1
+    STR_AVALANCHE_MISSILES: 3
+    STR_CANNON: 2
+    STR_CANNON_ROUNDS_X50: 5
+    STR_PISTOL: 3
+    STR_PISTOL_CLIP: 11
+    STR_RIFLE: 2
+    STR_RIFLE_CLIP: 8
+    STR_AUTO_CANNON: 1
+    STR_AC_HE_AMMO: 4
+    STR_AC_I_AMMO: 2
+    STR_HC_HE_AMMO: 3
+    STR_HC_I_AMMO: 3
+    STR_ROCKET_LAUNCHER: 1
+    STR_SMALL_ROCKET: 4
+    STR_GRENADE: 5
+    STR_SMOKE_GRENADE: 5
+# extra strings: Text for new research entries and misc. stuff like tank wrecks.
+extraStrings: 
+  - type: en-US
+    strings: 
+        STR_ALIEN_EQUIPMENT: Alien Artifacts
+        STR_ALIEN_EQUIPMENT_UFOPAEDIA: Existing footage makes it clear that the invaders' technology is beyond our understanding. We will have to interrogate live captives. Studying a corpse should give us an idea of what will be neccessary to keep them alive.
+        STR_ALIEN_BIOLOGY: Alien Biology
+        STR_ALIEN_BIOLOGY_UFOPAEDIA: Their internal organs are remarkably similar to ours, apart from the obvious tampering. A containment facility capable of keeping them alive should be possible. Autopsies will be needed to determine how best to interrogate each species.
+        STR_LASER_WEAPONS: Alien Weapons
+        STR_LASER_WEAPONS_UFOPAEDIA: Elerium-115 seems to be the source of the alien weapons' power. We could use it ourselves to design powerful handheld laser weaponry, with effectively limitless ammo. Early prototypes may suffer from low accuracy as conventional weapon design principles won't be entirely applicable.
+        STR_PLASMA_BEAM_ROUNDS_X10: Plasma Beam Rounds(x10)
+        TANK_CORPSE_1: Tank wreckage
+        HOVERTANK_CORPSE_1: Hovertank wreckage
+        STR_TANK_CANNON_REBUILD: Rebuild Tank/Cannon
+        STR_TANK_ROCKET_LAUNCHER_REBUILD: Rebuild Tank/Rocket Launcher
+        STR_TANK_LASER_CANNON_REBUILD: Rebuild Tank/Laser Cannon
+        STR_HOVERTANK_PLASMA_REBUILD: Rebuild Hovertank/Plasma
+        STR_HOVERTANK_LAUNCHER_REBUILD: Rebuild Hovertank/Launcher
