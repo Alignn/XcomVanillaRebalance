@@ -1,5 +1,7 @@
 # Vanilla Rebalanced
-A mod for OpenXcom.
+A mod for OpenXcom.  
+[Mod portal page](http://www.openxcom.com/mod/vanilla-rebalanced)  
+[Discussion thread](http://openxcom.org/forum/index.php/topic,3509.0.html)
 
 Vanilla XCOM is pretty great, but with experience it soon becomes clear that some things just aren't worth using, and others are too amazing to not go for right away unless you want to deliberately handicap yourself. This mod attempts to solve these issues. Briefly, the most important stuff:
 
