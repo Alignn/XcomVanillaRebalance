@@ -69,7 +69,7 @@ craftWeapons:
     accuracy: 70
     ammoMax: 50
     rearmRate: 10
-    clip: STR_PLASMA_BEAM_ROUNDS_X10
+    clip: STR_PLASMA_BEAM_ROUNDS
   - type: STR_FUSION_BALL_UC
     range: 68
     ammoMax: 6
@@ -104,11 +104,11 @@ items:
     transferTime: 48
     costBuy: 39300
     costSell: 31100
-  - type: STR_PLASMA_BEAM_ROUNDS_X10
-    size: 0.2
-    costSell: 214300
+  - type: STR_PLASMA_BEAM_ROUNDS
+    size: 0.02
+    costSell: 21400
     transferTime: 48
-    clipSize: 10
+    clipSize: 1
     listOrder: 1001
   - type: STR_TANK_CANNON
     accuracyAimed: 120
@@ -797,15 +797,17 @@ manufacture:
       STR_ELERIUM_115: 8
     producedItems:
       STR_HOVERTANK_LAUNCHER: 1
-  - name: STR_PLASMA_BEAM_ROUNDS_X10
+  - name: STR_PLASMA_BEAM_ROUNDS
     category: STR_CRAFT_AMMUNITION
-    space: 2
-    time: 300
-    cost: 80000
+    space: 0.2
+    time: 30
+    cost: 8000
     requires:
       - STR_PLASMA_CANNON
     requiredItems:
-      - STR_ELERIUM_115: 10
+      STR_ELERIUM_115: 1
+    producedItems: 
+      PLASMA_BEAM_ROUNDS: 1
 # UFOpaedia: New entries for the new research items Alien Artifacts and Alien Biology, as well as one for Laser Weapons.
 # Medkits and motion scanners available from the start without research.
 ufopaedia:
@@ -902,7 +904,7 @@ extraStrings:
         STR_ALIEN_BIOLOGY_UFOPAEDIA: Their internal organs are remarkably similar to ours, apart from the obvious tampering. A containment facility capable of keeping them alive should be possible. Autopsies will be needed to determine how best to interrogate each species.
         STR_LASER_WEAPONS: Alien Weapons
         STR_LASER_WEAPONS_UFOPAEDIA: Elerium-115 seems to be the source of the alien weapons' power. We could use it ourselves to design powerful handheld laser weaponry, with effectively limitless ammo. Early prototypes may suffer from low accuracy as conventional weapon design principles won't be entirely applicable.
-        STR_PLASMA_BEAM_ROUNDS_X10: Plasma Beam Rounds(x10)
+        STR_PLASMA_BEAM_ROUNDS: Plasma Beam Rounds
         TANK_CORPSE_1: Tank wreckage
         HOVERTANK_CORPSE_1: Hovertank wreckage
         STR_TANK_CANNON_REBUILD: Rebuild Tank/Cannon
